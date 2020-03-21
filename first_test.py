@@ -52,16 +52,11 @@ def shortener(string):
     pass
     #  ...wite your code here
     temp_string = string.split(' ')
-    temp_list = []
-    for short_string in temp_string:
-        if len(short_string) > 6:
-            result = short_string[0:6] + "*"
-            temp_list.append(result)
-        else:
-            temp_list.append(short_string)
-
-    answer = "".join(i + " " for i in temp_list)
-    return answer[0:-1]
+    temp = [id for id, i in enumerate(temp_string) if len(i) > 6]
+    for index in temp:
+        temp_string[index] = temp_string[index][0:6] + "*"
+    answer = " ".join(i for i in temp_string)
+    return answer
 
 
 def compare_ends(words):
@@ -78,6 +73,6 @@ def compare_ends(words):
     """
     pass
     #  ...wite your code here
-    interaction = 0
-    listing = [i for i in words if len(i)>1 and i[0] == i[-1]]
+
+    listing = [i for i in words if len(i) > 1 and i[0] == i[-1]]
     return len(listing)
